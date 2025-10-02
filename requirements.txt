@@ -12,3 +12,4 @@ pytest
 flake8
 bandit
 pylint
+seaborn
