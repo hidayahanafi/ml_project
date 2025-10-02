@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from ml_project.train import train_model
-from ml_project.evaluate import evaluate_model
+from train import train_model
+from evaluate import evaluate_model
 
 
 def test_evaluate_model():

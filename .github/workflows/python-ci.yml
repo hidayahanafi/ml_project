@@ -32,20 +32,27 @@ jobs:
         pip install -r requirements.txt
         pip install pytest black pylint
 
-    # Step 4: Run linter
+    # Step 4: Set PYTHONPATH
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
+    # Step 5: Run linter
     - name: Run pylint
       run: make check
 
-    # Step 5: Run code formatter check
+    # Step 6: Run code formatter check
     - name: Run black check
       run: black --check .
 
-    # Step 6: Run tests
+    # Step 7: Run tests
     - name: Run tests
-      run: pytest -v tests/
+      run: |
+        export PYTHONPATH=$(pwd)
+        pytest -v tests/
 
-    # Optional Step 7: Build Docker image if lint passes
+    # Optional Step 8: Build Docker image if lint passes
     - name: Build Docker
       if: success()  # Only if previous steps succeeded
-      run: |
-        docker build -t ml_project:latest .
+      run: docker build -t ml_project:latest .
+

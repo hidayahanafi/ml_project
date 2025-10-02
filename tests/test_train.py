@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from ml_project.prepare import prepare_data
+from prepare import prepare_data
 
 
 def test_prepare_data():

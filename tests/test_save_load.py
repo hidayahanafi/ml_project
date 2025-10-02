@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 import joblib
-from ml_project.train import train_model
-from ml_project.save import save_model
-from ml_project.load import load_model
+from train import train_model
+from save import save_model
+from load import load_model
 
 
 def test_save_load_model():
