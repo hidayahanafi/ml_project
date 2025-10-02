@@ -1,19 +1,20 @@
-"""Module pour la sauvegarde du modèle NBA."""
+"""
+Sauvegarde finale du pipeline NBA.
+"""
 
 import joblib
 
 
-def save_model(
-    model, scaler, model_path="nba_salary_model.joblib", scaler_path="scaler.joblib"
-):
+def save_model(model, scaler, encoder):
     """
-    Sauvegarde le modèle et le scaler dans des fichiers .joblib.
+    Sauvegarde le modèle, le scaler et l'encodeur sur disque.
 
-    Args:
-        model: Modèle entraîné.
-        scaler: Objet StandardScaler utilisé.
-        model_path (str): Chemin de sauvegarde du modèle.
-        scaler_path (str): Chemin de sauvegarde du scaler.
+    Paramètres
+    ----------
+    model : RandomForestRegressor
+    scaler : StandardScaler
+    encoder : OneHotEncoder
     """
-    joblib.dump(model, model_path)
-    joblib.dump(scaler, scaler_path)
+    joblib.dump(model, "nba_salary_model_final.joblib")
+    joblib.dump(scaler, "scaler_final.joblib")
+    joblib.dump(encoder, "encoder_final.joblib")

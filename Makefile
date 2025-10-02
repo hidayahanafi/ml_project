@@ -8,7 +8,7 @@ install:
 check:
 	pylint main.py prepare.py train.py evaluate.py save.py load.py
 	black --check main.py prepare.py train.py evaluate.py save.py load.py
-
+	PYTHONPATH=$(shell pwd) pylint main.py prepare.py train.py evaluate.py save.py load.py
 # Reformater automatiquement le code
 format:
 	black main.py prepare.py train.py evaluate.py save.py load.py

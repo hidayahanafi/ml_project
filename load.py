@@ -1,19 +1,19 @@
-"""Module pour le chargement du modèle NBA."""
+"""
+Chargement des objets sauvegardés du pipeline NBA.
+"""
 
 import joblib
 
 
-def load_model(model_path="nba_salary_model.joblib", scaler_path="scaler.joblib"):
+def load_model_objects():
     """
-    Charge le modèle et le scaler à partir des fichiers .joblib.
+    Charge le modèle, le scaler et l'encodeur depuis le disque.
 
-    Args:
-        model_path (str): Chemin du modèle sauvegardé.
-        scaler_path (str): Chemin du scaler sauvegardé.
-
-    Returns:
-        tuple: (model, scaler)
+    Returns
+    -------
+    model, scaler, encoder
     """
-    model = joblib.load(model_path)
-    scaler = joblib.load(scaler_path)
-    return model, scaler
+    model = joblib.load("nba_salary_model_final.joblib")
+    scaler = joblib.load("scaler_final.joblib")
+    encoder = joblib.load("encoder_final.joblib")
+    return model, scaler, encoder
