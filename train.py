@@ -13,9 +13,7 @@ def train_model(x_scaled, y):
     Entraîne un modèle RandomForest sur les données NBA.
     Retourne le modèle et ses métriques.
     """
-    x_train, x_test, y_train, y_test = train_test_split(
-        x_scaled, y, test_size=0.2, random_state=42
-    )
+    x_train, x_test, y_train, y_test = train_test_split(x_scaled, y)
 
     model = RandomForestRegressor(n_estimators=200, max_depth=10, random_state=42)
     model.fit(x_train, y_train)

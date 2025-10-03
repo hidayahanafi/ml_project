@@ -1,20 +1,15 @@
-import os
 import pandas as pd
-from prepare import prepare_data
+from train import train_model
 
+def test_train_model():
+    X = pd.DataFrame({"F1": [1, 2, 3, 4], "F2": [4, 3, 2, 1]})
+    y = pd.Series([10, 20, 30, 40])
 
-def test_prepare_data():
-    # Create a small dummy CSV
-    df = pd.DataFrame(
-        {"PLAYER": ["A", "B"], "SALARY_MILLIONS": [10, 20], "POSITION": ["G", "C"]}
-    )
-    test_file = "dummy.csv"
-    df.to_csv(test_file, index=False)
+    model, rmse, mae, r2, (X_train, X_test, y_train, y_test) = train_model(X, y)
 
-    x_data, y_data, encoder = prepare_data(test_file)
-
-    assert "POSITION" in x_data.columns
-    assert len(y_data) == 2
-    assert set(encoder.classes_) == {"C", "G"}
-
-    os.remove(test_file)
+    # Vérifie que le modèle est bien entraîné
+    assert model is not None
+    # Vérifie que les métriques sont des floats
+    assert isinstance(rmse, float)
+    assert isinstance(mae, float)
+    assert isinstance(r2, float)

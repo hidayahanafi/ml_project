@@ -1,16 +1,14 @@
 import pandas as pd
-import numpy as np
 from train import train_model
 from evaluate import evaluate_model
 
-
 def test_evaluate_model():
-
-    X = pd.DataFrame({"FEATURE1": [1, 2, 3, 4], "FEATURE2": [4, 3, 2, 1]})
+    X = pd.DataFrame({"F1": [1, 2, 3, 4], "F2": [4, 3, 2, 1]})
     y = pd.Series([10, 20, 30, 40])
 
-    model, scaler, X_train_scaled, X_test_scaled, y_train, y_test = train_model(
-        X, y, test_size=0.5, random_state=1
-    )
+    model, _, _, _, (X_train, X_test, y_train, y_test) = train_model(X, y)
 
-    evaluate_model(model, X_test_scaled, y_test, X.columns)
+    # Appelle evaluate_model
+    evaluate_model(model, X_test, y_test)
+
+    # Pas de retour, mais si aucun exception levée, test passé

@@ -14,7 +14,9 @@ def prepare_data(data_path):
     """
     data = pd.read_csv(data_path)
     y = data["SALARY_MILLIONS"]
-    x_df = data.drop(columns=["SALARY_MILLIONS", "PLAYER", "TEAM", "Rk"])
+    x_df = data.drop(
+        columns=["SALARY_MILLIONS", "PLAYER", "TEAM", "Rk"], errors="ignore"
+    )
 
     # Séparation des colonnes numériques et catégorielles
     num_cols = x_df.select_dtypes(include=["int64", "float64"]).columns
