@@ -1,6 +1,7 @@
 import pandas as pd
 from train import train_model
 
+
 def test_train_model():
     X = pd.DataFrame({"F1": [1, 2, 3, 4], "F2": [4, 3, 2, 1]})
     y = pd.Series([10, 20, 30, 40])

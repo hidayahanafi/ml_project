@@ -2,13 +2,12 @@ import os
 import pandas as pd
 from prepare import prepare_data
 
+
 def test_prepare_data():
     # Création d'un petit CSV de test
-    df = pd.DataFrame({
-        "PLAYER": ["A", "B"],
-        "SALARY_MILLIONS": [10, 20],
-        "POSITION": ["G", "C"]
-    })
+    df = pd.DataFrame(
+        {"PLAYER": ["A", "B"], "SALARY_MILLIONS": [10, 20], "POSITION": ["G", "C"]}
+    )
     test_file = "dummy.csv"
     df.to_csv(test_file, index=False)
 

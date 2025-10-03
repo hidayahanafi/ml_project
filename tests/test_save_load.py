@@ -4,6 +4,7 @@ from train import train_model
 from save import save_model
 from load import load_model
 
+
 def test_save_load_model():
     # Données fictives
     X = pd.DataFrame({"F1": [1, 2], "F2": [3, 4]})
@@ -17,9 +18,7 @@ def test_save_load_model():
 
     # Chargement du modèle en utilisant le chemin fixé par save_model
     loaded_model, loaded_scaler, loaded_encoder = load_model(
-        "nba_salary_model_final.joblib",
-        "scaler_final.joblib",
-        "encoder_final.joblib"
+        "nba_salary_model_final.joblib", "scaler_final.joblib", "encoder_final.joblib"
     )
 
     # Vérification de la cohérence des prédictions
@@ -28,6 +27,10 @@ def test_save_load_model():
     assert all(pred_original == pred_loaded)
 
     # Nettoyage des fichiers générés
-    for f in ["nba_salary_model_final.joblib", "scaler_final.joblib", "encoder_final.joblib"]:
+    for f in [
+        "nba_salary_model_final.joblib",
+        "scaler_final.joblib",
+        "encoder_final.joblib",
+    ]:
         if os.path.exists(f):
             os.remove(f)
